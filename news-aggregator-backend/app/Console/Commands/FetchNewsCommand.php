@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Jobs\FetchNewsJob;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Queue;
 use Throwable;
 
@@ -38,6 +39,7 @@ class FetchNewsCommand extends Command
 
             $this->info('News fetching process completed.');
         } catch (Throwable $e) {
+            Log::error($e->getMessage());
             $this->error($e->getMessage());
         }
     }

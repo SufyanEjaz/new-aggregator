@@ -17,7 +17,6 @@ abstract class BaseApiService
         $this->httpClient = new Client();
     }
 
-    // Fetch data from an API
     protected function fetchApiData($url, $query)
     {
         try {
@@ -31,7 +30,6 @@ abstract class BaseApiService
 
     }
 
-    // Insert or update sources in the database
     protected function processSources($sourceName)
     {
         $sourceSlug = Str::slug($sourceName);
@@ -44,14 +42,12 @@ abstract class BaseApiService
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            // Refresh source list after insertion
             $existingSources = DB::table('sources')->pluck('id', 'slug')->toArray();
         }
 
         return $existingSources[$sourceSlug];
     }
 
-     // General method to process article data
      protected function prepareArticleData($sourceId, $author, $title, $slug, $url, $description, $content, $urlToImage, $publishedAt)
      {
          return [
@@ -69,7 +65,6 @@ abstract class BaseApiService
          ];
      }
 
-    // Insert or update categories in the database
     protected function processCategories($categoryName)
     {
         $categorySlug = Str::slug($categoryName);
@@ -82,15 +77,12 @@ abstract class BaseApiService
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            // Refresh category list after insertion
             $existingCategories = DB::table('categories')->pluck('id', 'slug')->toArray();
         }
 
         return ['categorySlug' => $categorySlug, 'existingCategories' => $existingCategories];
-        // return $existingCategories[$categorySlug];
     }
 
-    // General method to process article Categories
     protected function prepareArticleCategoryData($articleSlug, $categorySlug)
     {
         return [
@@ -101,32 +93,23 @@ abstract class BaseApiService
         ];
     }
 
-    // Insert articles in bulk
     protected function insertArticles($articlesData)
     {
         DB::table('articles')->insertOrIgnore($articlesData);
         return DB::table('articles')->pluck('id', 'slug')->toArray();
     }
-
      
-    // Update the pivot table `article_category` with `article_id` and `category_id`
     protected function updatePivotTable($articleCategoryData, $articleIds, $existingCategories)
     {
         foreach ($articleCategoryData as &$pivot) {
             $pivot['article_id'] = $articleIds[$pivot['article_slug']] ?? null;
             $pivot['category_id'] = $existingCategories[$pivot['category_slug']] ?? null;
-
-            // Remove the slug placeholders after mapping to actual IDs
             unset($pivot['article_slug']);
             unset($pivot['category_slug']);
         }
-
-        // Insert article-category relationships into the pivot table
         $this->insertArticleCategories($articleCategoryData);
     }
 
-
-    // Insert article categories
     protected function insertArticleCategories($articleCategoryData)
     {
         DB::table('article_category')->insertOrIgnore($articleCategoryData);

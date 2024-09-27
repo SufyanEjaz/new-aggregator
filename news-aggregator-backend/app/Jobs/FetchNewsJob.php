@@ -49,18 +49,15 @@ class FetchNewsJob implements ShouldQueue
         }
     }
 
-    /**
-     * Fetch news articles from a given service.
-     *
-     * @param $service The service instance (GuardianApiService, NyTimesApiService, or NewsApiService).
-     * @param string $serviceName The name of the service for logging purposes.
-     */
     private function fetchFromService($service, $serviceName)
     {
         // Retry fetching the news 3 times with exponential backoff
         retry(3, function () use ($service, $serviceName) {
             $service->fetch();
             Log::info("Successfully fetched news from {$serviceName}");
-        }, [1000, 2000, 5000]);
+        }, function ($attempt) {
+            $delays = [1000, 2000, 5000]; // Delays for each attempt
+            return $delays[$attempt - 1] ?? 5000; // Default to 5000ms if attempt exceeds delay array
+        });
     }
 }
