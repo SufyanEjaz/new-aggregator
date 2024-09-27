@@ -32,6 +32,7 @@ const HomePage = () => {
       setIsLoading(false);
 
       setPagination({
+        current_page: articlesData.current_page,
         next: articlesData.next_page_url ? getPageNumber(articlesData.next_page_url) : null,
         prev: articlesData.prev_page_url ? getPageNumber(articlesData.prev_page_url) : null,
       });
@@ -53,6 +54,7 @@ const HomePage = () => {
     setSearchParams(searchParamsString);
 
     setPagination({
+      current_page: fetchedArticles.current_page,
       next: fetchedArticles.next_page_url ? getPageNumber(fetchedArticles.next_page_url) : null,
       prev: fetchedArticles.prev_page_url ? getPageNumber(fetchedArticles.prev_page_url) : null,
     });
@@ -95,6 +97,7 @@ const HomePage = () => {
           >
             <span>{"<<"}</span> {"Previous"}
           </button>
+          <span>Page { pagination.current_page }</span>
           <button
             onClick={() => handlePageChange(pagination.next)}
             className="next"

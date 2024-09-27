@@ -219,7 +219,7 @@ function Preferences() {
                 </div>
                 {/* {error && <p style={{ color: 'red' }}>{error}</p>} */}
                 <div className='buttons'>
-                    <a href='/'> <button className='skip'>{userHasPreferences ? "Cancel" : "Skip"}</button> </a>
+                    <a href='/' className='skipButton'> <button className='skip'>{userHasPreferences ? "Cancel" : "Skip"}</button> </a>
                     <button
                       type="primary"
                       onClick={handleSubmit}

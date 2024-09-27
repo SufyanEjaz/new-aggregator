@@ -55,12 +55,22 @@
         }
       }
     
-      .skip {
+      .skip, .skipButton {
         background-color: #D3D3D3;
         color: #000;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: background-color 0.3s;
         
         &:hover {
           background-color: #B0B0B0;
+        }
+
+        @include sm {
+          width: 100%;
+          font-size: 14px;
         }
       }
     }
