@@ -1,0 +1,106 @@
+@import "../../responsive.scss";
+
+.category {
+  margin: 20px 15px;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include tab {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include sm {
+    grid-template-columns: 1fr;
+    margin: auto
+  }
+
+  justify-items: center;
+}
+
+.card {
+  height: auto;
+  width: 100%;
+  max-width: 296px;
+  position: relative;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 20px;
+  border: 1px solid #8d9bc0;
+
+  @include sm {
+    max-width: 100%;
+  }
+
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+
+    @include sm {
+      height: 200px;
+    }
+    // border-top-left-radius: 20px;
+    // border-bottom-right-radius: 20px;
+  }
+
+  h4 {
+    margin-top: 10px;
+    font-size: 25px;
+    color: #333;
+    @include sm {
+      font-size: 20px;
+    }
+  }
+
+  p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #666;
+    padding: 0 10px;
+    @include sm {
+      font-size: 14px;
+    }
+  }
+
+  .see-more {
+    background-color: #4070f4;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+    margin-top: 5px;
+    @include sm {
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+
+    &:hover {
+      background-color: #2647aa;
+    }
+  }
+}
+.categoryid {
+  display: flex;
+}
+.no-articles {
+  width: 100%;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // margin-left: 0%;
+
+  img {
+    height: 150px;
+    width: 150px;
+  }
+}
+

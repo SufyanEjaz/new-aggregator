@@ -1,0 +1,68 @@
+@import "../../responsive.scss";
+
+
+.article-detail {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 80px; /* Adds margin to ensure it's below the navbar */
+
+  /* Ensuring the text is justified (aligned both left and right) */
+  text-align: justify;
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  /* Styling for the image below the title */
+  .article-image-below-title {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image covers the available space without stretching */
+    margin-top: 20px;  /* Adds space between the title and image */
+    margin-bottom: 20px; /* Adds space between the image and the following content */
+    max-height: 400px; /* Limits the height of the image */
+  }
+
+  /* The content will also be justified */
+  .article-content {
+    margin-top: 20px;
+    line-height: 1.6;
+    text-align: justify;  /* Justify the content text */
+  }
+
+  /* Categories list styling */
+  .article-categories {
+    margin-top: 20px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  /* Styling for the external link button */
+  .external-link {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+.loading {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

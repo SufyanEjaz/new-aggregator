@@ -1,0 +1,81 @@
+@import "../../responsive.scss";
+.preferance {
+  // height: 200px;
+  // width: 100%;
+  .container {
+    margin-top: 5%;
+    // width: 100%;
+    @include lg {
+      width: 80%;
+    }
+    @include md {
+      width: 80%;
+    }
+    @include sm {
+      width: 80%;
+      margin-top: 30%;
+    }
+    .heading {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      background-color: #4A90E2;
+      padding: 10px 0;
+      color: #fff;
+      border-radius: 5px;
+      text-transform: uppercase;
+    }
+    .buttons {
+      margin: 50px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include sm {
+        flex-direction: column;
+      }
+
+      button {
+        padding: 15px 30px;
+        background-color: #4070f4;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #3658c8;
+        }
+    
+        @include sm {
+          width: 100%;
+          font-size: 14px;
+        }
+      }
+    
+      .skip {
+        background-color: #D3D3D3;
+        color: #000;
+        
+        &:hover {
+          background-color: #B0B0B0;
+        }
+      }
+    }
+  }
+}
+
+
+.page-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333; /* You can adjust the color as per your design */
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}

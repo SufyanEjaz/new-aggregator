@@ -1,0 +1,100 @@
+@import "../../responsive.scss";
+
+.home {
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  margin: 70px 0 40px 0;
+    // margin: 70px 0;
+    text-align: center;
+    h1 {
+        font-size: 26px;
+        text-transform: capitalize;
+        line-height: 33px;
+    }
+}
+
+.divider {
+    position: relative;
+    margin-top: 20px;
+    height: 2px;
+    background-color: transparent;
+}
+
+.div-transparent:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 40%;
+    right: 40%;
+    width: 20%;
+    height: 2px;
+    background-image: linear-gradient(to right, transparent, #3b5998, transparent);
+}
+
+.div-dot:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: calc(50% - 9px);
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-color: #3b5998;
+    border: 4px solid #fff;
+    border-radius: 50%;
+}
+
+.Cards {
+  margin: 20px;
+}
+
+.clientSection {
+    margin-top: 20px;
+    background-color: #f8f9fb;
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 50px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  min-width: 128px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s ease;
+  span {
+    font-size: 15px;
+  }
+}
+
+.pagination button:hover{
+  transform: scale(1.1); 
+}
+
+.pagination button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

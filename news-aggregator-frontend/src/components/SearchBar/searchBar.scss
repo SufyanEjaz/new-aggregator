@@ -1,0 +1,162 @@
+@import "../../responsive.scss";
+
+.searchbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+
+  @include sm {
+    width: 95%;
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .searchContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+  }
+
+  .mainSearch {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+    justify-content: space-between;
+
+    @include sm {
+      flex-direction: column;
+      gap: 20px;
+      // width: 100%;
+    }
+
+    .search {
+      flex: 1;
+      
+      .inputbox {
+        background-color: #fff;
+        border-radius: 8px;
+        border: 1px solid #cccccc;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        height: 50px;
+
+        input {
+          width: 100%;
+          height: 100%;
+          padding-left: 20px;
+          border: none;
+          outline: none;
+          font-size: 16px;
+          background-color: transparent;
+
+          @include sm {
+            font-size: 14px;
+          }
+          &:focus {
+            border: 1px solid #4070f4;
+            border-radius: 8px;
+          }
+          &:hover {
+            border: 2px solid #4070f4;
+            border-radius: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  .selectors {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+
+    @include sm {
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+    }
+
+    .selector {
+      flex: 1;
+
+      
+      .ant-select {
+        width: 93%;
+      }
+
+      p {
+        padding: -3px 0 0 0;
+      }
+
+      input {
+        width: 95%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #d9d9d9;
+        outline: none;
+        transition: border-color 0.3s ease;
+        padding: 6px;
+    
+        &:focus {
+          border-color: #4070f4;
+          box-shadow: 0 0 5px rgba(64, 112, 244, 0.5);
+        }
+        &:hover {
+          border: 2px solid #4070f4;
+          border-radius: 8px;
+        }
+      }
+    
+      @include sm {
+        width: 100%;
+        input {
+          width: 98%;
+        }
+      }
+ 
+    }
+  }
+  .buttons {
+    display: flex;
+    align-items: center;
+    // width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    @include sm {
+      width: 100%;
+    }
+    button {
+      padding: 15px 30px;
+      background-color: #4070f4;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      min-width: 350px;
+      @include sm {
+        min-width: 250px;
+      }
+
+      &:hover {
+        background-color: #3658c8;
+      }
+
+      @include sm {
+        width: 60%;
+        font-size: 14px;
+      }
+    }
+  }
+}

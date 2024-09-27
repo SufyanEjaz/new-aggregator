@@ -1,0 +1,41 @@
+FROM php:8.2-fpm
+
+# Set the working directory
+WORKDIR /var/www
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    cron \
+    netcat-openbsd \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Copy application code
+COPY . /var/www
+
+# Install app dependencies
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www/storage
+
+# Copy cronjob
+COPY cronjob /etc/cron.d/cronjob
+RUN chmod 0644 /etc/cron.d/cronjob \
+    && crontab /etc/cron.d/cronjob
+
+# Entry point
+CMD ["cron", "-f"]
